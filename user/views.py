@@ -16,9 +16,6 @@ class MeView(mixins.UpdateModelMixin,
 
     def get(self, request):
         user = request.user
-
-
-
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
