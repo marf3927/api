@@ -4,5 +4,6 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
+
     instagramId = models.CharField(max_length=30)
-    phoneNumber = models.TextField()
+    phoneNumber = models.CharField(max_length=20)

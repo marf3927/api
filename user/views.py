@@ -1,5 +1,4 @@
-from rest_framework import mixins
-from rest_framework import generics
+from rest_framework import mixins, generics, permissions
 from rest_framework.response import Response
 
 from .models import User
@@ -11,6 +10,7 @@ from .serializers import UserSerializer
 class MeView(mixins.UpdateModelMixin,
                generics.GenericAPIView):
 
+    permission_classes = [permissions.IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
