@@ -1,14 +1,16 @@
-from rest_framework import mixins, generics, permissions
+from rest_framework import mixins, generics, permissions, viewsets
 from rest_framework.response import Response
 
 from .models import User
 from .serializers import UserSerializer
+from application.serializers import ApplicationSerializer
+from application.models import Application
 
 # Create your views here.
 
 
 class MeView(mixins.UpdateModelMixin,
-               generics.GenericAPIView):
+             generics.GenericAPIView):
 
     permission_classes = [permissions.IsAuthenticated]
     queryset = User.objects.all()
@@ -26,3 +28,9 @@ class MeView(mixins.UpdateModelMixin,
         user.save()
         serializer = UserSerializer(user)
         return Response(serializer.data)
+
+
+class MeApplicationViewSet(viewsets.ModelViewSet):
+    serializer_class = ApplicationSerializer
+    queryset = Application.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
