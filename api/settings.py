@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'user.apps.UserConfig',
     'application.apps.ApplicationConfig',
+    'custom_application.apps.CustomApplicationConfig',
 
 ]
 
@@ -143,5 +144,7 @@ REST_FRAMEWORK = {
 }
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'
 
 CORS_ORIGIN_ALLOW_ALL = True
